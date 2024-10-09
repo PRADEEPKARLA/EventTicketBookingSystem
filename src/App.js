@@ -1,23 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Register from './components/Register';
+import Login from './components/Login';
+import Events from './components/Events';
+import SeatSelection from './components/SeatSelection';
+import BookingHistory from './components/BookingHistory';
+
+const routerConfig = createBrowserRouter([
+  {
+    path: "/register",
+    element: <Register />
+  }, {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path: "/",
+    element: <Login />
+  },
+  {
+    path: "/events",
+    element: <Events />
+  },
+  {
+    path: "/seat-selection/:eventId",
+    element: <SeatSelection />
+  },
+  {
+    path: "/booking-history",
+    element: <BookingHistory />
+  },
+]);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterProvider router={routerConfig} />
     </div>
   );
 }
